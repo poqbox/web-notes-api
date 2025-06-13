@@ -9,6 +9,11 @@ app.use(express.json())
 app.use("/api/notes", notes_routes)
 app.use("/api/deleted_items", deletes_routes)
 
+app.use((request, response, next) => {
+    console.log("Request received at " + new Date().toLocaleString())
+    next()
+})
+
 
 app.get("/", (request, response) => {
     // HATEOAS links

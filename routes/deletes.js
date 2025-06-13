@@ -4,6 +4,11 @@ const deletes = require("../data/deletes")
 
 const router = express.Router()
 
+router.use((request, response, next) => {
+    console.log("Request received at " + new Date().toLocaleString())
+    next()
+})
+
 
 router.route("/")
     .get((request, response, next) => {
