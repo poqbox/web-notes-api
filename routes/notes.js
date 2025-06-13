@@ -1,7 +1,7 @@
 const express = require("express")
 const error = require("../utils/error")
 const notes = require("../data/notes")
-const deleted_items = require("./deleted_items").deleted_items
+const deletes = require("./deletes").deletes
 
 
 const router = express.Router()
@@ -59,7 +59,7 @@ router.route("/:id")
             if (_.id == id) {
                 const item = notes.splice(i, 1)[0]
                 item.deleted_at = new Date()
-                deleted_items.unshift(item)
+                deletes.unshift(item)
                 return true
             }
         })

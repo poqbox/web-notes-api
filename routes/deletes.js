@@ -1,6 +1,6 @@
 const express = require("express")
 const error = require("../utils/error")
-const deleted_items = require("../data/deleted_items")
+const deletes = require("../data/deletes")
 
 
 const router = express.Router()
@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.route("/")
     .get((request, response, next) => {
-        response.json(deleted_items)
+        response.json(deletes)
     })
 
 router.route("/:id")
@@ -17,11 +17,11 @@ router.route("/:id")
         const notes = require("./notes").notes
         const id = request.params.id
 
-        const note = deleted_items.find((item, d) => {
+        const note = deletes.find((item, d) => {
             if (item.id == id) {
                 // remove item from deleted list
                 delete item.deleted_at
-                deleted_items.splice(d, 1)
+                deletes.splice(d, 1)
 
                 // find position in notes list
                 const i = notes.findIndex((note) => note.id > id)
@@ -41,4 +41,4 @@ router.route("/:id")
 //
 
 
-module.exports = {router, deleted_items}
+module.exports = {router, deletes}

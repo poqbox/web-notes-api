@@ -1,13 +1,13 @@
 const express = require("express")
 const notes_routes = require("./routes/notes").router
-const deleted_items_routes = require("./routes/deleted_items").router
+const deletes_routes = require("./routes/deletes").router
 
 
 const app = express()
 app.listen(3000, () => { console.log("Server running.") })
 app.use(express.json())
 app.use("/api/notes", notes_routes)
-app.use("/api/deleted_items", deleted_items_routes)
+app.use("/api/deleted_items", deletes_routes)
 
 
 app.get("/", (request, response) => {
