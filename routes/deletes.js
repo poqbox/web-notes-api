@@ -11,7 +11,7 @@ router.use((request, response, next) => {
 
 
 router.route("/")
-    .get((request, response, next) => {
+    .get((request, response) => {
         response.json(deletes)
     })
 
