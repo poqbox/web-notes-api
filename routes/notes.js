@@ -1,7 +1,7 @@
 const express = require("express")
 const error = require("../utils/error")
 const notes = require("../data/notes")
-const deleted_items = require("../routes/deleted_items").deleted_items
+const deleted_items = require("./deleted_items").deleted_items
 
 
 const router = express.Router()
