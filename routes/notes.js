@@ -68,7 +68,7 @@ router.route("/:id")
     })
 
 router.route("/search")
-    .get((request, response, next) => {
+    .get((request, response) => {
         const title = request.query["title"]
         const content = request.query["content"]
         const query_notes = search(title, content)
