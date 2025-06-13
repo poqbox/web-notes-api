@@ -71,9 +71,9 @@ router.route("/search")
     .get((request, response, next) => {
         const title = request.query["title"]
         const content = request.query["content"]
-        query_notes = search(title, content)
+        const query_notes = search(title, content)
 
-        response.json(search(title, content))
+        response.json(query_notes)
     })
 //
 
