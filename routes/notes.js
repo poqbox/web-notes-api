@@ -1,5 +1,6 @@
 const express = require("express")
 const error = require("../utils/error")
+const Regex = require("../utils/regex")
 const notes = require("../data/notes")
 const deletes = require("./deletes").deletes
 
@@ -89,8 +90,11 @@ router.route("/search")
 function search(title, content) {
     // search engine
     const query_notes = []
-    const reTitle = new RegExp((title) ? String.raw`^.*${title}.*$` : String.raw`.*`, "i")
-    const reContent = new RegExp((content) ? String.raw`^.*${content}.*$` : String.raw`.*`, "i")
+    console.log(title)
+    const reTitle = Regex.fromSearchQuery(title)
+    const reContent = Regex.fromSearchQuery(content)
+    console.log(reTitle)
+    console.log(reContent)
     notes.forEach((_) => {
         if (reTitle.test(_.title) && reContent.test(_.content))
             query_notes.push(_)
