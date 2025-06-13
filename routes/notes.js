@@ -81,8 +81,8 @@ router.route("/search")
 function search(title, content) {
     // search engine
     const query_notes = []
-    const reTitle = new RegExp((title) ? String.raw`^.*${title}.*$` : String.raw`.*`)
-    const reContent = new RegExp((content) ? String.raw`^.*${content}.*$` : String.raw`.*`)
+    const reTitle = new RegExp((title) ? String.raw`^.*${title}.*$` : String.raw`.*`, "i")
+    const reContent = new RegExp((content) ? String.raw`^.*${content}.*$` : String.raw`.*`, "i")
     notes.forEach((_) => {
         if (reTitle.test(_.title) && reContent.test(_.content))
             query_notes.push(_)
