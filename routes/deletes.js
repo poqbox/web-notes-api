@@ -1,5 +1,4 @@
 const express = require("express")
-const error = require("../utils/error")
 const deletes = require("../data/deletes")
 
 
