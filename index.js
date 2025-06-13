@@ -1,5 +1,5 @@
 const express = require("express")
-const notes_routes = require("./routes/notes")
+const notes_routes = require("./routes/notes").router
 const deleted_items_routes = require("./routes/deleted_items").router
 
 

@@ -1,7 +1,7 @@
 const express = require("express")
+const error = require("../utils/error")
 const notes = require("../data/notes")
 const deleted_items = require("../routes/deleted_items").deleted_items
-const error = require("../utils/error")
 
 
 const router = express.Router()
@@ -95,4 +95,4 @@ function search(title, content) {
 }
 
 
-module.exports = router
+module.exports = {router, notes}
