@@ -33,6 +33,15 @@ router.route("/")
         }
     })
 
+router.route("/search")
+    .get((request, response) => {
+        const title = request.query["title"]
+        const content = request.query["content"]
+        const query_notes = search(title, content)
+
+        response.json(query_notes)
+    })
+
 router.route("/:id")
     .get((request, response, next) => {
         const id = request.params.id
@@ -74,15 +83,6 @@ router.route("/:id")
             response.json(note)
         else
             next()
-    })
-
-router.route("/search")
-    .get((request, response) => {
-        const title = request.query["title"]
-        const content = request.query["content"]
-        const query_notes = search(title, content)
-
-        response.json(query_notes)
     })
 //
 
