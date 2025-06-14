@@ -1,4 +1,5 @@
 const express = require("express")
+const fs = require("fs")
 const notes_routes = require("./routes/notes").router
 const deletes_routes = require("./routes/deletes").router
 
@@ -6,6 +7,24 @@ const deletes_routes = require("./routes/deletes").router
 const app = express()
 app.listen(3000, () => { console.log("Server running.") })
 app.use(express.json())
+
+// template engine
+app.engine("view", (filePath, options, cb) => {
+    fs.readFile(filePath, (error, content) => {
+        if (error)
+            return cb(error)
+
+        const render = content.toString()
+            .replaceAll("#title#", options.title)
+            .replace("#content#", options.content)
+
+        return cb(null, render)
+    })
+})
+app.set("views", "./views")
+app.set("view engine", "view")
+
+// routers
 app.use("/api/notes", notes_routes)
 app.use("/api/deleted_items", deletes_routes)
 

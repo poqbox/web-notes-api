@@ -84,6 +84,24 @@ router.route("/:id")
         else
             next()
     })
+
+router.route("/render/:id")
+    .get((request, response, next) => {
+        const options = {}
+        const id = request.params.id
+        const note = notes.find((_) => {
+            if (_.id == id) {
+                options.title = _.title
+                options.content = _.content
+                return true
+            }
+        })
+
+        if (note)
+            response.render("notes", options)
+        else
+            next()
+    })
 //
 
 
