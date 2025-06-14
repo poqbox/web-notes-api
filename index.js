@@ -16,6 +16,7 @@ app.engine("view", (filePath, options, cb) => {
             return cb(error)
 
         const render = content.toString()
+            .replace("#stylesheet#", options.stylesheet)
             .replaceAll("#title#", options.title)
             .replace("#content#", options.content)
 

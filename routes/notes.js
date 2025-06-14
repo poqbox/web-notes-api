@@ -89,8 +89,13 @@ router.route("/render/:id")
     .get((request, response, next) => {
         const options = {}
         const id = request.params.id
+        const stylesheet = (request.query["stylesheet"])
+            ? `/stylesheets/${request.query["stylesheet"]}`
+            : ""
+
         const note = notes.find((_) => {
             if (_.id == id) {
+                options.stylesheet = stylesheet
                 options.title = _.title
                 options.content = _.content
                 return true
