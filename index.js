@@ -30,6 +30,7 @@ app.set("view engine", "view")
 app.use("/api/notes", notes_routes)
 app.use("/api/deleted_items", deletes_routes)
 
+// middleware
 app.use((request, response, next) => {
     console.log("Request received at " + new Date().toLocaleString())
     next()
