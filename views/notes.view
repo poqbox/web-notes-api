@@ -6,6 +6,6 @@
     <link rel="stylesheet" href="#stylesheet#">
   </head>
   <body>
-    <pre>#content#</pre>
+    <pre style="margin: 0;">#content#</pre>
   </body>
 </html>
