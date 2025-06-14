@@ -7,6 +7,7 @@ const deletes_routes = require("./routes/deletes").router
 const app = express()
 app.listen(3000, () => { console.log("Server running.") })
 app.use(express.json())
+app.use(express.static("./data/public"))
 
 // template engine
 app.engine("view", (filePath, options, cb) => {
